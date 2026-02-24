@@ -22,6 +22,17 @@ figure {
 
 article img {
   margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+}
+
+article h3 {
+  margin-top: 1rem;
+}
+
+article p {
+  margin-top: 0.25rem;
 }
 
 .skip-link {
