@@ -1,44 +1,36 @@
-## Breakpoint Secimi
+Breakpoint Seçimi
+640px ve 1024px değerlerini; içeriğin tek sütunda sıkışmaya başladığı ve daha geniş ekranlarda satır uzunluğunun okunabilirliği bozduğu noktalar için seçtim. Mobile-first yaklaşımında, önce en küçük ekran (telefon) için tasarımı kurup, daha sonra 640px (tablet) ve 1024px (masaüstü) üzerinde genişleyen layout (yerleşim) davranışları tanımladım.
 
-640px ve 1024px degerlerini, icerigin tek sutunda sikismaya basladigi ve daha genis ekranda satir uzunlugunun okunabilirligi bozdugu noktalar icin sectim.  
-Mobile-first yaklasiminda once en kucuk ekran (telefon) icin tasarimi kurup daha sonra 640px (tablet) ve 1024px (masaustu) uzerinde genisleyen layout davranislari tanimladim.
+Layout Tercihleri
+Header: Tek eksende (yatay) hizalama sağlamak ve logo/navigasyon öğelerini dengeli bir şekilde dağıtmak için Flexbox kullandım.
 
-## Layout Tercihleri
+Proje Kartları: Kartların hem yatayda hem dikeyde düzenli bir ızgara oluşturması için CSS Grid tercih ettim. repeat(auto-fit, minmax(280px, 1fr)) yapısı sayesinde ekran genişliğine göre kolon sayısı otomatik olarak ayarlanıyor.
 
-Header icin **Flexbox** kullandim cunku tek eksende (yatay) hizalama ve logo / navigasyon ogelerini aralarinda bosluk birakarak dagitmak gerekiyor.  
-Proje kartlari icin **CSS Grid** tercih ettim; kartlar hem yatayda hem dikeyde duzenli bir izgara olusturuyor ve `repeat(auto-fit, minmax(280px, 1fr))` ile ekrana gore otomatik kolon sayisi ayarlanabiliyor.
+Auto-fit / Auto-fill Kararı
+project-grid yapısında auto-fit kullanmamın temel sebebi, yeterli içerik olmadığında boş kolonların oluşmasını engellemek ve mevcut kartların genişleyerek alanı verimli bir şekilde doldurmasını sağlamaktır.
 
-## Auto-fit / Auto-fill Karari
+Design Tokens (Tasarım Değişkenleri)
+Renk paletini; güven ve profesyonellik hissi verdiği için mavi tonlarında (--color-primary, --color-secondary) tuttum. Boşluk (spacing), yuvarlatma (radius), tipografi, gölge (shadow) ve geçiş (transition) değerlerini src/styles/tokens.css içerisinde topladım. Tüm stil dosyalarında sabit px değerleri yerine bu değişkenleri (örneğin: var(--space-md)) kullandım.
 
-`project-grid` yapisinda `repeat(auto-fit, minmax(280px, 1fr))` kullandim.  
-`auto-fit` secmemin sebebi, yeterli alan olmadiginda bos kolonlar olusmasini engellemek ve kartlarin genisleyerek boslugu doldurmasini saglamak.
+Akışkan (Fluid) Tipografi
+Temel font boyutlarını clamp fonksiyonu ile tanımlayarak ekran boyutuna duyarlı hale getirdim:
 
-## Design Tokens
+Base: --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
 
-Renk paletini mavi tonlarinda tuttum (`--color-primary`, `--color-secondary`) cunku guven ve profesyonellik hissi veriyor.  
-Spacing, radius, tipografi, shadow ve transition degerlerini `src/styles/tokens.css` icerisinde topladim. Tum stil dosyalarinda dogrudan sabit `px` yerine bu degiskenleri (`var(--space-md)` gibi) kullandim.
+XL: --text-xl: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
 
-## Fluid Tipografi
+2XL: --text-2xl: clamp(1.5rem, 1rem + 2vw, 2.5rem);
 
-Temel font boyutlarini `clamp` ile tanimladim:
+Bu sayede küçük ekranlarda okunabilirlik korunurken, geniş ekranlarda yazılar aşırı büyümeden orantılı bir şekilde ölçekleniyor.
 
-- `--text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);`
-- `--text-xl: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);`
-- `--text-2xl: clamp(1.5rem, 1rem + 2vw, 2.5rem);`
+Mobile-first Uygulaması
+Tüm temel yerleşim kuralları (flex, grid, padding) önce mobil cihazlar için tanımlandı. Daha sonra yalnızca @media (min-width: 640px) ve @media (min-width: 1024px) blokları ile tablet ve masaüstü için spesifik davranışlar eklendi; karmaşıklığı önlemek adına max-width temelli media query kullanımından kaçınıldı.
 
-Boylece kucuk ekranlarda okunabilirlik korunurken, genis ekranlarda yazilar asiri buyumeden orantili sekilde artiyor.
+Görüntü ve Object-fit Yönetimi
+Proje kartlarındaki görsellerin, kart alanını tasarımı bozmadan doldurması için şu kuralları uyguladım:
 
-## Mobile-first Uygulamasi
+img { max-width: 100%; height: auto; }
 
-Tum temel layout kurallari (flex, grid, padding) once mobil icin tanimlandi.  
-Daha sonra yalnizca `@media (min-width: 640px)` ve `@media (min-width: 1024px)` bloglari ile tablet ve masaustu icin ekstra davranis eklendi; `max-width` temelli media query kullanilmadi.
+.project-card img { height: 200px; object-fit: cover; }
 
-## Goruntu ve object-fit
-
-Proje kartlarindaki ekran goruntulerinin tum kart alanini duzenli bir sekilde doldurmasi icin:
-
-- `img { max-width: 100%; height: auto; }`
-- `.project-card img { height: 200px; object-fit: cover; }`
-
-kullandim. Boylece farkli oranlardaki ekran goruntuleri kart icerisinde tasarimi bozmayacak sekilde kirpilip ortalanmis oluyor.
-
+Bu kullanım sayesinde, farklı en-boy oranlarına sahip ekran görüntüleri kart içerisinde düzgünce kırpılarak ortalanmış oluyor.
