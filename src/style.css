@@ -123,6 +123,12 @@ main > section + section {
   line-height: 1.7;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 figure {
   display: flex;
   flex-direction: column;
