@@ -44,3 +44,27 @@ Tarayicida `http://localhost:5173` adresini ac.
 ### Lighthouse Accessibility Skoru
 
 ![Lighthouse Accessibility Skoru](lighthouse.png)
+
+---
+
+## Responsive Tasarim (Farkli Ekran Boyutlari)
+
+Proje mobil (telefon), tablet ve masaustu (bilgisayar) ekranlarinda duzgun sekilde calisacak sekilde tasarlandi. Asagida her ekran boyutu icin alinan goruntuler yer almaktadir.
+
+### Mobil Gorunum (Telefon Ekrani - 375px)
+
+Telefonlarda sayfa tek sutun halinde gorunur. Baslik ve navigasyon ust ustadir. Hakkimda bolumundeki profil fotografi ve metin alt alta dizilir. Proje kartlari da tek sutunda listelenir. Bu sayede kucuk ekranlarda icerik rahatca okunur ve kullanilir.
+
+![Mobil Ekran Goruntusu (375px)](screenshot-mobile.png)
+
+### Tablet Gorunum (768px)
+
+Tablet boyutundaki ekranlarda sayfa daha genis bir alanda gorunur. Baslik ve navigasyon yan yana hizalanir. Hakkimda bolumunde profil fotografi ve aciklama metni yatay duzende yan yana dizilir. Proje kartlari iki sutun halinde gosterilir.
+
+![Tablet Ekran Goruntusu (768px)](screenshot-tablet.png)
+
+### Masaustu Gorunum (Bilgisayar Ekrani - 1280px)
+
+Bilgisayar ekranlarinda sayfa tam genislikte ve ortalanmis sekilde gorunur. Tum bolumler genis alanda rahatca okunur. Proje kartlari ekran genisligine gore otomatik olarak birden fazla sutunda dizilir. Bu sayede buyuk ekranlarda bosluk verimli kullanilir.
+
+![Masaustu Ekran Goruntusu (1280px)](screenshot-desktop.png)
