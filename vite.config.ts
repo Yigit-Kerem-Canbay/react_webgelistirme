@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 
-// Basit Vite yapılandırması
+import tailwindcss from '@tailwindcss/vite'
+
 export default defineConfig({
-  // Ek ayara şimdilik gerek yok
+  plugins: [tailwindcss()],
 })
 
