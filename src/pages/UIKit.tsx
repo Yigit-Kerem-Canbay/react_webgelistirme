@@ -28,7 +28,7 @@ export function UIKit() {
             <section className="space-y-6">
                 <div>
                     <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                        Buttons
+                        Butonlar
                     </h2>
                     <p className="text-gray-600 dark:text-gray-400 mb-6">
                         Farkli varyantlar, boyutlar ve durumlar icin hazirlanmis Button bileseni.
@@ -42,10 +42,10 @@ export function UIKit() {
                             Varyantlar (Primary, Secondary, Danger, Ghost)
                         </h3>
                         <div className="flex flex-wrap gap-4">
-                            <Button variant="primary">Primary Button</Button>
-                            <Button variant="secondary">Secondary Button</Button>
-                            <Button variant="danger">Danger Button</Button>
-                            <Button variant="ghost">Ghost Button</Button>
+                            <Button variant="primary">Birincil Buton</Button>
+                            <Button variant="secondary">Ikinci Buton</Button>
+                            <Button variant="danger">Tehlike Butonu</Button>
+                            <Button variant="ghost">Hayalet Buton</Button>
                         </div>
                     </div>
 
@@ -56,13 +56,13 @@ export function UIKit() {
                         </h3>
                         <div className="flex flex-wrap items-center gap-4">
                             <Button variant="primary" size="sm">
-                                Small
+                                Kucuk
                             </Button>
                             <Button variant="primary" size="md">
-                                Medium
+                                Orta
                             </Button>
                             <Button variant="primary" size="lg">
-                                Large
+                                Buyuk
                             </Button>
                         </div>
                     </div>
@@ -74,10 +74,10 @@ export function UIKit() {
                         </h3>
                         <div className="flex flex-wrap items-center gap-4">
                             <Button variant="primary" disabled>
-                                Disabled
+                                Pasif
                             </Button>
                             <Button variant="secondary" isLoading>
-                                Loading
+                                Yukleniyor
                             </Button>
                             <Button variant="primary">
                                 <Save className="w-4 h-4 mr-2" />
@@ -98,7 +98,7 @@ export function UIKit() {
             <section className="space-y-6">
                 <div>
                     <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                        Inputs
+                        Girdi Alanlari (Inputs)
                     </h2>
                     <p className="text-gray-600 dark:text-gray-400 mb-6">
                         Label, help text ve error message destekleyen form bilesenleri.
@@ -126,7 +126,7 @@ export function UIKit() {
             <section className="space-y-6">
                 <div>
                     <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                        Alerts
+                        Uyarilar (Alerts)
                     </h2>
                     <p className="text-gray-600 dark:text-gray-400 mb-6">
                         Kullaniciya bilgi vermek icin 4 farkli tipte dismissible (kapatilabilir)
@@ -155,7 +155,7 @@ export function UIKit() {
             <section className="space-y-6">
                 <div>
                     <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                        Cards
+                        Kartlar (Cards)
                     </h2>
                     <p className="text-gray-600 dark:text-gray-400 mb-6">
                         Icerik gruplamak icin kullanilan, gorsel, baslik ve footer destekleyen

@@ -153,7 +153,7 @@ export function Portfolio() {
                         </p>
 
                         {submitStatus === 'success' && (
-                            <Alert variant="success" title="Mesajingiz Gonderildi!" dismissible className="mb-8">
+                            <Alert variant="success" title="Mesajiniz Gonderildi!" dismissible className="mb-8">
                                 Size en kisa surede donus yapacagim. Tesekkurler!
                             </Alert>
                         )}
