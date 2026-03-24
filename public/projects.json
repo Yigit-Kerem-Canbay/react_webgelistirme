@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "React Todo App",
+    "description": "Günlük yapılacaklar listesini yönetmek için geliştirilmiş basit ve anlaşılır bir web uygulaması. React Hook'ları kullanılarak state yönetimi sağlanmıştır.",
+    "tech": ["React", "TypeScript", "Tailwind CSS"],
+    "year": 2024,
+    "category": "Frontend",
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    "id": 2,
+    "title": "Kişisel Blog Sitesi",
+    "description": "Kişisel yazı ve notlarımı paylaştığım modern tasarımlı blog projesi. Node.js backend ile birlikte çalışır.",
+    "tech": ["React", "Node.js", "Express", "MongoDB"],
+    "year": 2023,
+    "category": "Fullstack",
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    "id": 3,
+    "title": "E-Ticaret Paneli",
+    "description": "Satıcıların ürünlerini yönetebildiği, satış istatistiklerini görebildiği bir yönetim paneli.",
+    "tech": ["React", "Redux", "Material UI"],
+    "year": 2024,
+    "category": "Frontend",
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
+  },
+  {
+    "id": 4,
+    "title": "Hava Durumu API Servisi",
+    "description": "Farklı şehirler için güncel hava durumu verilerini sunan RESTful API projesi.",
+    "tech": ["Node.js", "Express", "TypeScript"],
+    "year": 2022,
+    "category": "Backend",
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1504608524841-42ce6f12a9f4?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    "id": 5,
+    "title": "Mobil Egzersiz Uygulaması",
+    "description": "Kullanıcıların günlük egzersizlerini takip etmesini sağlayan cross-platform mobil uygulama.",
+    "tech": ["React Native", "Firebase"],
+    "year": 2025,
+    "category": "Mobile",
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop"
+  }
+]
