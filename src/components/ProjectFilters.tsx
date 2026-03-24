@@ -1,5 +1,5 @@
 import { Input } from './Input';
-import { FilterState, Category } from '../types/project';
+import type { FilterState, Category } from '../types/project';
 
 interface ProjectFiltersProps {
     filters: FilterState;
@@ -8,7 +8,13 @@ interface ProjectFiltersProps {
     onSortChange: (field: FilterState['sortField'], order: FilterState['sortOrder']) => void;
 }
 
-const CATEGORIES: (Category | '')[] = ['Tümü', 'Frontend', 'Backend', 'Fullstack', 'Mobile'];
+const CATEGORIES: { label: string, value: Category | '' }[] = [
+    { label: 'Tümü', value: '' },
+    { label: 'Frontend', value: 'Frontend' },
+    { label: 'Backend', value: 'Backend' },
+    { label: 'Fullstack', value: 'Fullstack' },
+    { label: 'Mobile', value: 'Mobile' }
+];
 
 export function ProjectFilters({ filters, onSearchChange, onCategoryChange, onSortChange }: ProjectFiltersProps) {
     return (
@@ -30,19 +36,19 @@ export function ProjectFilters({ filters, onSearchChange, onCategoryChange, onSo
                         Kategori
                     </label>
                     <div className="flex flex-wrap gap-2">
-                        {CATEGORIES.map((category) => {
-                            const isSelected = filters.category === category || (category === 'Tümü' && filters.category === '');
+                        {CATEGORIES.map((cat) => {
+                            const isSelected = filters.category === cat.value;
                             return (
                                 <button
-                                    key={category}
-                                    onClick={() => onCategoryChange(category === 'Tümü' ? '' : category as Category)}
+                                    key={cat.label}
+                                    onClick={() => onCategoryChange(cat.value)}
                                     className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                                         isSelected
                                             ? 'bg-primary text-white shadow-sm'
                                             : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
                                     }`}
                                 >
-                                    {category}
+                                    {cat.label}
                                 </button>
                             );
                         })}

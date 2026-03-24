@@ -84,7 +84,7 @@ export function Portfolio() {
                             <figure className="shrink-0 w-full sm:w-64 md:w-72">
                                 <div className="aspect-square overflow-hidden rounded-2xl shadow-xl ring-1 ring-gray-900/5 dark:ring-white/10">
                                     <img
-                                        src="/profil.jpg"
+                                        src="/pp.jpg"
                                         alt="Yigit Kerem Canbay"
                                         className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                                         onError={(e) => {

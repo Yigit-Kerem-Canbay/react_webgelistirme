@@ -1,4 +1,4 @@
-import { Project, Category, FilterState } from '../types/project';
+import type { Project, Category, FilterState } from '../types/project';
 
 export const filterBySearch = (projects: Project[], search: string): Project[] => {
   if (!search.trim()) return projects;
