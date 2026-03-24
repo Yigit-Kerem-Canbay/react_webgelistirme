@@ -1,12 +1,9 @@
-import { useState } from 'react'
-import {
-    Card,
-    CardImage,
-    CardHeader,
-    CardTitle,
-    CardContent,
-    CardFooter,
-} from '../components/Card'
+import { useState, useEffect, useMemo } from 'react'
+import type { Project, FilterState, Category } from '../types/project'
+import { fetchProjects } from '../services/projectService'
+import { applyFilters } from '../utils/projectFilters'
+import { ProjectCard } from '../components/ProjectCard'
+import { ProjectFilters } from '../components/ProjectFilters'
 import { Button } from '../components/Button'
 import { Input } from '../components/Input'
 import { Alert } from '../components/Alert'
@@ -14,6 +11,51 @@ import { Alert } from '../components/Alert'
 export function Portfolio() {
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
+    const [projects, setProjects] = useState<Project[]>([])
+    const [loading, setLoading] = useState<boolean>(true)
+    const [error, setError] = useState<string | null>(null)
+    
+    const [filterState, setFilterState] = useState<FilterState>({
+        search: '',
+        category: '',
+        sortField: '',
+        sortOrder: 'desc'
+    })
+
+    useEffect(() => {
+        const loadProjects = async () => {
+            try {
+                setLoading(true)
+                setError(null)
+                // Ufak bir gecikme ekliyoruz ki loading state'i net gorunsun (Gercekci UX dokunusu)
+                await new Promise(resolve => setTimeout(resolve, 600))
+                const data = await fetchProjects()
+                setProjects(data)
+            } catch (err) {
+                setError('Projeler yuklenirken bir sorun olustu. Lutfen daha sonra tekrar deneyin.')
+            } finally {
+                setLoading(false)
+            }
+        }
+        
+        loadProjects()
+    }, [])
+
+    const filteredProjects = useMemo(() => {
+        return applyFilters(projects, filterState)
+    }, [projects, filterState])
+
+    const handleSearchChange = (search: string) => {
+        setFilterState(prev => ({ ...prev, search }))
+    }
+
+    const handleCategoryChange = (category: Category | '') => {
+        setFilterState(prev => ({ ...prev, category }))
+    }
+
+    const handleSortChange = (sortField: FilterState['sortField'], sortOrder: FilterState['sortOrder']) => {
+        setFilterState(prev => ({ ...prev, sortField, sortOrder }))
+    }
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         // Simulate form submission
@@ -84,63 +126,56 @@ export function Portfolio() {
                     </section>
 
                     {/* Projeler Bolumu */}
-                    <section id="projeler" className="scroll-mt-24">
-                        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-10 tracking-tight">
+                    <section id="projeler" className="scroll-mt-24 space-y-8">
+                        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight">
                             Projelerim
                         </h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                            <Card className="hover:shadow-lg transition-shadow duration-300">
-                                <CardImage
-                                    src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop"
-                                    alt="Todo Uygulamasi"
-                                />
-                                <CardHeader>
-                                    <CardTitle>Todo Uygulamasi</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-gray-600 dark:text-gray-400 line-clamp-3">
-                                        Gunluk yapilacaklar listesini yonetmek icin gelistirilmis
-                                        basit ve anlasilir bir web uygulamasi. React Hook'lari
-                                        kullanilarak state yonetimi saglanmistir.
-                                    </p>
-                                </CardContent>
-                                <CardFooter>
-                                    <Button variant="secondary" className="w-full">
-                                        Projeyi Incele
-                                    </Button>
-                                </CardFooter>
-                            </Card>
+                        
+                        <ProjectFilters 
+                            filters={filterState}
+                            onSearchChange={handleSearchChange}
+                            onCategoryChange={handleCategoryChange}
+                            onSortChange={handleSortChange}
+                        />
 
-                            <Card className="hover:shadow-lg transition-shadow duration-300">
-                                <CardImage
-                                    src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop"
-                                    alt="Blog Sitesi"
-                                />
-                                <CardHeader>
-                                    <CardTitle>Blog Sitesi</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-gray-600 dark:text-gray-400 line-clamp-3">
-                                        Kisisel yazi ve notlarimi paylastigim modern tasarimli blog
-                                        projesi. Tailwind CSS entegrasyonu ile responsive mimaride
-                                        hazirlanmistir.
-                                    </p>
-                                </CardContent>
-                                <CardFooter>
-                                    <Button variant="secondary" className="w-full">
-                                        Projeyi Incele
-                                    </Button>
-                                </CardFooter>
-                            </Card>
+                        {/* UX Durum Yönetimi */}
+                        {loading && (
+                            <div className="flex flex-col items-center justify-center py-20 space-y-4">
+                                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                                <p className="text-gray-500 dark:text-gray-400">Projeler yükleniyor...</p>
+                            </div>
+                        )}
 
-                            <Card variant="outlined" className="flex flex-col items-center justify-center p-8 border-dashed border-2 bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group cursor-pointer">
-                                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                    <span className="text-3xl text-primary font-light">+</span>
-                                </div>
-                                <h3 className="font-medium text-gray-900 dark:text-white">Yeni Proje Ekle</h3>
-                                <p className="text-sm text-gray-500 text-center mt-2">Yakinda yeni projeler eklenecektir.</p>
-                            </Card>
-                        </div>
+                        {error && !loading && (
+                            <Alert variant="error" title="Hata!" className="my-8">
+                                {error}
+                            </Alert>
+                        )}
+
+                        {!loading && !error && filteredProjects.length === 0 && (
+                            <div className="flex flex-col items-center justify-center py-16 bg-white dark:bg-gray-800 rounded-2xl border border-dashed border-gray-300 dark:border-gray-700">
+                                <div className="text-gray-400 dark:text-gray-600 mb-4 text-6xl">😕</div>
+                                <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-2">Proje Bulunamadı</h3>
+                                <p className="text-gray-500 dark:text-gray-400 text-center max-w-md">
+                                    "{filterState.search}" araması ve seçilen filtreler ile eşleşen proje bulunamadı.
+                                </p>
+                                <Button 
+                                    variant="ghost" 
+                                    className="mt-6"
+                                    onClick={() => setFilterState({ search: '', category: '', sortField: '', sortOrder: 'desc' })}
+                                >
+                                    Filtreleri Temizle
+                                </Button>
+                            </div>
+                        )}
+
+                        {!loading && !error && filteredProjects.length > 0 && (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {filteredProjects.map(project => (
+                                    <ProjectCard key={project.id} project={project} />
+                                ))}
+                            </div>
+                        )}
                     </section>
 
                     {/* Iletisim Bolumu */}
