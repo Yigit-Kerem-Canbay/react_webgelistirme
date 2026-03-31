@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "title": "E-Ticaret Platformu",
+    "description": "Modern, hızlı ve ölçeklenebilir e-ticaret çözümü. Sepet yönetimi ve ödeme entegrasyonu barındırır.",
+    "category": "Fullstack",
+    "year": 2023,
+    "tech": ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": "Kişisel Blog",
+    "description": "Markdown destekli, SEO uyumlu ve temalandırılabilir kişisel blog sistemi.",
+    "category": "Frontend",
+    "year": 2022,
+    "tech": ["Next.js", "TypeScript", "Tailwind CSS"]
+  },
+  {
+    "id": "3",
+    "title": "Görev Yöneticisi",
+    "description": "Sürükle bırak mantığıyla çalışan, Kanban panosu özellikli takım görev yöneticisi.",
+    "category": "Frontend",
+    "year": 2024,
+    "tech": ["React", "Redux Toolkit", "Framer Motion"]
+  },
+  {
+    "id": "4",
+    "title": "REST API Servisi",
+    "description": "Kimlik doğrulama, yetkilendirme ve veritabanı manipülasyonu sağlayan güvenli backend servisi.",
+    "category": "Backend",
+    "year": 2023,
+    "tech": ["Express.js", "PostgreSQL", "Prisma", "JWT"]
+  },
+  {
+    "id": "5",
+    "title": "Hava Durumu Mobil",
+    "description": "Konum bazlı anlık hava durumu ve tahminleri gösteren mobil uyumlu PWA.",
+    "category": "Mobile",
+    "year": 2024,
+    "tech": ["React Native", "Expo", "Weather API"]
+  },
+  {
+    "id": "6",
+    "title": "Gerçek Zamanlı Sohbet",
+    "description": "Socket.io kullanılarak geliştirilmiş, odalar ve özel mesajlar barındıran sohbet uygulaması.",
+    "category": "Fullstack",
+    "year": 2024,
+    "tech": ["React", "Socket.io", "Express.js", "Tailwind CSS"],
+    "featured": true
+  }
+]
